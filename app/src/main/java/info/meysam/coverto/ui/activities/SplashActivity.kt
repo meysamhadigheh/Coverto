@@ -1,10 +1,12 @@
 package info.meysam.coverto.ui.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import android.view.View
+import android.view.animation.AnimationUtils
+import android.widget.TextView
 import info.meysam.coverto.R
 import kotlinx.android.synthetic.main.activity_splash.*
+
 
 class SplashActivity : BaseActivity() {
 
@@ -21,6 +23,12 @@ class SplashActivity : BaseActivity() {
     override fun instantiateViews() {
 
         animation.setAnimation(R.raw.lf20_dy2leguq)
+
+
+        titleTxt.text = " COVERTO "
+
+        var animation = AnimationUtils.loadAnimation(this, R.anim.anim)
+        titleTxt.startAnimation(animation)
 
 
     }
