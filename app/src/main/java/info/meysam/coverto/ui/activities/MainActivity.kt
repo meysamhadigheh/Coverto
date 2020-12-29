@@ -4,10 +4,25 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import info.meysam.coverto.R
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+class MainActivity : BaseActivity() {
+
+
+    override fun setContentViewActivity() {
+
         setContentView(R.layout.activity_main)
+
+    }
+
+    override fun getIntentData() {
+    }
+
+    override fun instantiateViews() {
+    }
+
+    override fun setViewListeners() {
+    }
+
+    override fun setActivityContent() {
     }
 }
 
