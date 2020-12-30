@@ -10,4 +10,14 @@
 
     <color name="primary" >#974085</color>
     <color name="primary_dark">#980379</color>
+
+    <!-- bottom navigation color-->
+
+    <color name="bottom_navigation_text_selected">@color/nav_bottom_default</color>
+    <color name="bottom_navigation_text_unselected">#949494</color>
+
+    <color name="bottom_navigation_icon_selected">@android:color/transparent</color>
+    <color name="bottom_navigation_icon_unselected">#949494</color>
+
+    <color name="nav_bottom_default">@color/primary</color>
 </resources>
