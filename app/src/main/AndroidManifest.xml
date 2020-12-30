@@ -16,8 +16,15 @@
         android:theme="@style/Theme.Coverto"
         tools:ignore="GoogleAppIndexingWarning,LockedOrientationActivity"
         tools:replace="supportsRtl">
-        <activity android:name=".ui.activities.TypeChooseActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activities.OrderDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activities.OrderSubmitActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activities.TypeChooseActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activities.SplashActivity"
             android:screenOrientation="portrait">

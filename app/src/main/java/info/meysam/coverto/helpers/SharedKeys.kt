@@ -14,6 +14,16 @@ const val ORDERSBNAV = 1
 const val PROFILEBNAV = 0
 
 
+enum class orderStatus {
+
+    SUBMITTED,
+    PROCESSING,
+    SENT,
+    DELIVERED,
+    DECLINED,
+    CANCELED
+}
+
 
 
 

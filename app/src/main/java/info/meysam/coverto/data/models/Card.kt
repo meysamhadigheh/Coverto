@@ -20,9 +20,9 @@ class Card : ItemBinder {
         val requestOptions = RequestOptions()
         requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL)
 
-        Glide.with( binder?.context!! )
-            .load( image ).apply(requestOptions)
-            .into(binder.itemView.image )
+        Glide.with(binder?.context!!)
+            .load(image).apply(requestOptions)
+            .into(binder.itemView.image)
 
         binder.itemView.title.text = title
 

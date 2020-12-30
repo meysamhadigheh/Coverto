@@ -36,9 +36,9 @@ class MainActivity : BaseActivity() {
     override fun instantiateViews() {
 
         bottom_navigation.labelVisibilityMode =
-                LabelVisibilityMode.LABEL_VISIBILITY_LABELED // for enableShiftingMode(false)
+            LabelVisibilityMode.LABEL_VISIBILITY_LABELED // for enableShiftingMode(false)
         bottom_navigation.isItemHorizontalTranslationEnabled =
-                false // for enableItemShiftingMode(false)
+            false // for enableItemShiftingMode(false)
         bottom_navigation.enableAnimation(false)
 
         val typeface = Typeface.createFromAsset(context.assets, "fonts/irfontnumlight.ttf")

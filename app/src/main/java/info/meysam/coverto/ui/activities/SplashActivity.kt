@@ -1,11 +1,10 @@
 package info.meysam.coverto.ui.activities
 
 import android.content.Intent
-import android.view.View
 import android.view.animation.AnimationUtils
-import android.widget.TextView
-import android.widget.Toast
+import androidx.room.Room
 import info.meysam.coverto.R
+import info.meysam.coverto.data.OrderDatabase
 import info.meysam.coverto.helpers.SharedObjects
 import info.meysam.coverto.helpers.common.NetworkConnectionInterceptor
 import info.meysam.coverto.ui.dialogs.InternetDialog
@@ -20,6 +19,8 @@ import retrofit2.Response
 class SplashActivity : BaseActivity() {
 
     var dataReceived = false;
+    var database: OrderDatabase? = null
+
 
     override fun setContentViewActivity() {
 
