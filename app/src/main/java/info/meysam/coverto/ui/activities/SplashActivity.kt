@@ -4,11 +4,22 @@ import android.content.Intent
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.TextView
+import android.widget.Toast
 import info.meysam.coverto.R
+import info.meysam.coverto.helpers.SharedObjects
+import info.meysam.coverto.helpers.common.NetworkConnectionInterceptor
+import info.meysam.coverto.ui.dialogs.InternetDialog
+import info.meysam.coverto.webservice.ApiHelper
+import info.meysam.coverto.webservice.CardsResponse
 import kotlinx.android.synthetic.main.activity_splash.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class SplashActivity : BaseActivity() {
+
+    var dataReceived = false;
 
     override fun setContentViewActivity() {
 
@@ -38,14 +49,86 @@ class SplashActivity : BaseActivity() {
 
     override fun setActivityContent() {
 
+        fetchCards()
+
+
         val handler = android.os.Handler()
 
         handler.postDelayed({
 
-            startActivity(Intent(context, MainActivity::class.java))
-            finish()
+            if (dataReceived) {
+
+                startActivity(Intent(context, MainActivity::class.java))
+                finish()
+
+            }
+
 
         }, 3500)
 
     }
+
+    fun fetchCards() {
+
+
+        ApiHelper.myApiInterface.allCards(
+
+
+        ).also {
+
+            it.enqueue(object : Callback<CardsResponse>, InternetDialog.ClickListener {
+
+                override fun onResponse(
+                    call: Call<CardsResponse>,
+                    response: Response<CardsResponse>
+                ) {
+
+
+                    if (response.body() != null) {
+
+                        SharedObjects.setCardsList(response.body()?.cards?.getValue("متفرقه")!!)
+
+                        dataReceived = true
+
+                    } else {
+
+
+                    }
+
+
+                }
+
+                override fun onFailure(call: Call<CardsResponse>, t: Throwable) {
+
+
+                    if (t is NetworkConnectionInterceptor.NoConnectivityException) {
+                        // show No Connectivity message to user or do whatever you want.
+                        val dialog = InternetDialog()
+
+                        dialog.listener = this
+
+                        supportFragmentManager.let { it1 -> dialog.show(it1, dialog.tag) }
+
+                    }
+
+                }
+
+                override fun internetExitClicked() {
+                    finish()
+
+                }
+
+                override fun internetRetryClicked() {
+
+                    fetchCards()
+                }
+
+            })
+
+
+        }
+
+
+    }
+
 }
