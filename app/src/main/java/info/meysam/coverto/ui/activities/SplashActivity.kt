@@ -4,7 +4,7 @@ import android.content.Intent
 import android.view.animation.AnimationUtils
 import androidx.room.Room
 import info.meysam.coverto.R
-import info.meysam.coverto.data.OrderDatabase
+import info.meysam.coverto.data.OrdersDatabase
 import info.meysam.coverto.helpers.SharedObjects
 import info.meysam.coverto.helpers.common.NetworkConnectionInterceptor
 import info.meysam.coverto.ui.dialogs.InternetDialog
@@ -18,8 +18,11 @@ import retrofit2.Response
 
 class SplashActivity : BaseActivity() {
 
-    var dataReceived = false;
-    var database: OrderDatabase? = null
+    var dataReceived = false
+    var handlerFinished=false
+
+
+
 
 
     override fun setContentViewActivity() {
@@ -50,12 +53,15 @@ class SplashActivity : BaseActivity() {
 
     override fun setActivityContent() {
 
+
+
         fetchCards()
 
 
         val handler = android.os.Handler()
 
         handler.postDelayed({
+            handlerFinished = true
 
             if (dataReceived) {
 
@@ -90,6 +96,13 @@ class SplashActivity : BaseActivity() {
                         SharedObjects.setCardsList(response.body()?.cards?.getValue("متفرقه")!!)
 
                         dataReceived = true
+
+                        if (handlerFinished) {
+
+                            startActivity(Intent(context, MainActivity::class.java))
+                            finish()
+
+                        }
 
                     } else {
 

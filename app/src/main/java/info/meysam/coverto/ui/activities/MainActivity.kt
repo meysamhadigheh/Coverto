@@ -4,8 +4,10 @@ import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.room.Room
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import info.meysam.coverto.R
+import info.meysam.coverto.data.OrdersDatabase
 import info.meysam.coverto.helpers.HOMEBNAV
 import info.meysam.coverto.ui.fragments.HomeFragment
 import info.meysam.coverto.ui.fragments.OrdersFragment
@@ -22,6 +24,13 @@ class MainActivity : BaseActivity() {
     private var profileFragment: ProfileFragment? = null
 
     private var currentFragment: Fragment? = null
+
+    companion object{
+
+        var database: OrdersDatabase? = null
+
+
+    }
 
 
     override fun setContentViewActivity() {
@@ -56,6 +65,11 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setActivityContent() {
+
+        database= Room
+            .databaseBuilder(applicationContext, OrdersDatabase::class.java, "orders")
+            .allowMainThreadQueries()
+            .build()
 
         bottom_navigation.currentItem = HOMEBNAV
 

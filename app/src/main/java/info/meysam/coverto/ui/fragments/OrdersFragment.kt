@@ -2,24 +2,22 @@ package info.meysam.coverto.ui.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import hivatec.ir.hivatectools.adapters.HivaRecyclerAdapter
 import info.meysam.coverto.R
-import info.meysam.coverto.data.OrderDatabase
-import info.meysam.coverto.data.models.Card
 import info.meysam.coverto.data.models.Order
-import info.meysam.coverto.helpers.SharedObjects
+import info.meysam.coverto.helpers.ORDERINFO
+import info.meysam.coverto.ui.activities.MainActivity
 import info.meysam.coverto.ui.activities.OrderDetailsActivity
-import info.meysam.coverto.ui.activities.TypeChooseActivity
 import kotlinx.android.synthetic.main.fragment_home.*
-import java.util.ArrayList
+import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * A simple [Fragment] subclass.
@@ -30,7 +28,6 @@ class OrdersFragment : Fragment() {
 
 
     val adapter = HivaRecyclerAdapter()
-    val dataSource = OrderDatabase.getInstance(context!!).orderDatabaseDao
 
 
     override fun onCreateView(
@@ -46,15 +43,26 @@ class OrdersFragment : Fragment() {
 
 
         container.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        adapter.items = dataSource.all
         container?.adapter = adapter
 
 
         adapter.setOnItemClickListener(Order::class.java) { item, _ ->
             val intent = Intent(context, OrderDetailsActivity::class.java)
-            intent.putExtra("orderInfo", Gson().toJson(item))
+            intent.putExtra(ORDERINFO, Gson().toJson(item))
             startActivity(intent)
         }
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        var notes: List<Order> = ArrayList()
+        notes = MainActivity.database?.orderDao()?.all!! as ArrayList
+
+        adapter.items = notes
+        adapter.notifyDataSetChanged()
 
 
     }

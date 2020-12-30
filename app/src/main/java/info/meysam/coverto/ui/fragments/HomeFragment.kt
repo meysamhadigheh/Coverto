@@ -14,8 +14,11 @@ import hivatec.ir.hivatectools.adapters.HivaRecyclerAdapter
 import hivatec.ir.hivatectools.adapters.OnItemClickListener
 import info.meysam.coverto.R
 import info.meysam.coverto.data.models.Card
-import info.meysam.coverto.helpers.SharedObjects
+import info.meysam.coverto.data.models.Order
+import info.meysam.coverto.helpers.*
+import info.meysam.coverto.ui.activities.MainActivity
 import info.meysam.coverto.ui.activities.TypeChooseActivity
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
@@ -40,18 +43,31 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        container.layoutManager = GridLayoutManager(context,2, RecyclerView.VERTICAL, false)
+        container.layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
         adapter.items = SharedObjects.getCardsList()
         container?.adapter = adapter
 
 
         adapter.setOnItemClickListener(Card::class.java) { item, _ ->
+
+            var order = Order()
+            order.code = item.id.toString()
             val intent = Intent(context, TypeChooseActivity::class.java)
-            intent.putExtra("cardInfo", Gson().toJson(item))
-            startActivity(intent)
+            intent.putExtra(ORDERINFO, Gson().toJson(order))
+            startActivityForResult(intent, ORDERSUBMITTED)
         }
 
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == ORDERSUBMITTED) {
+
+            (activity as MainActivity).bottom_navigation.currentItem= ORDERSBNAV
+
+        }
     }
 
 }
