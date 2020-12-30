@@ -106,5 +106,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:radius="0dp"
-        app:text="ثیت سفارش" />
+        app:text="ثبت سفارش" />
 </androidx.constraintlayout.widget.ConstraintLayout>

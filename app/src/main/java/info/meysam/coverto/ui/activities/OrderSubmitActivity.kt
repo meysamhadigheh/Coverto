@@ -50,6 +50,8 @@ class OrderSubmitActivity : BaseActivity() {
 
         MainActivity.database?.orderDao()?.insert(order)
 
+        submit.startLoadingState()
+
         val handler = android.os.Handler()
 
         handler.postDelayed({
