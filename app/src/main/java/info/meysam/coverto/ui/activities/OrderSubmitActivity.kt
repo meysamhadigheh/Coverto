@@ -8,6 +8,7 @@ import info.meysam.coverto.R
 import info.meysam.coverto.data.models.Order
 import info.meysam.coverto.helpers.ORDERINFO
 import info.meysam.coverto.helpers.ORDERSUBMITTED
+import info.meysam.coverto.helpers.SharedObjects
 import kotlinx.android.synthetic.main.activity_order_submit.*
 
 class OrderSubmitActivity : BaseActivity() {
@@ -28,6 +29,11 @@ class OrderSubmitActivity : BaseActivity() {
     }
 
     override fun instantiateViews() {
+
+        edt_name.setText(SharedObjects.getName_t())
+        edt_family.setText(SharedObjects.getFamily_t())
+        edt_address.setText(SharedObjects.getAddress_t())
+        edt_mobile.setText(SharedObjects.getPhone_t())
     }
 
     override fun setViewListeners() {

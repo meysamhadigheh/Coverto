@@ -6,6 +6,14 @@ const val ORDERINFO: String = "ORDERINFO"
 const val CARDINFO: String = "CARDINFO"
 
 
+const val NAME: String = "NAME"
+const val FAMILY: String = "FAMILY"
+const val PHONE: String = "PHONE"
+const val ADDRESS: String = "ADDRESS"
+
+
+
+
 /**
  * bottom navigation item
  */
