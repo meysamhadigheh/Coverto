@@ -29,7 +29,15 @@ Profile section:
 user can save his/her profile details to use it in order submit section
  ```     
 
+## Technology
 
+```bash
+main language Kotlin
+Room for databse
+SharedPreference for saving user Profile
+Retrofit for api call
+Glide for loading image
+```
 
 ## Usage
 
