@@ -52,6 +52,7 @@ class HomeFragment : Fragment() {
 
             var order = Order()
             order.code = item.id.toString()
+            order.image_url = item.image
             val intent = Intent(context, TypeChooseActivity::class.java)
             intent.putExtra(ORDERINFO, Gson().toJson(order))
             startActivityForResult(intent, ORDERSUBMITTED)
@@ -65,7 +66,7 @@ class HomeFragment : Fragment() {
 
         if (resultCode == ORDERSUBMITTED) {
 
-            (activity as MainActivity).bottom_navigation.currentItem= ORDERSBNAV
+            (activity as MainActivity).bottom_navigation.currentItem = ORDERSBNAV
 
         }
     }

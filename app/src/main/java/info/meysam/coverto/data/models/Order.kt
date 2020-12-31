@@ -36,6 +36,15 @@ class Order : ItemBinder {
     @ColumnInfo(name = "c_type")
     var c_type: String? = caseType.TWO_D.toString()
 
+    @ColumnInfo(name = "phone")
+    var phone: String? = null
+
+    @ColumnInfo(name = "description")
+    var description: String? = null
+
+    @ColumnInfo(name = "image_url")
+    var image_url: String? = null
+
 
     @ColumnInfo(name = "status")
     var status: String? = orderStatus.SUBMITTED.toString()

@@ -16,7 +16,6 @@ class OrderSubmitActivity : BaseActivity() {
     var order = Order()
 
 
-
     override fun setContentViewActivity() {
 
         setContentView(R.layout.activity_order_submit)
@@ -47,6 +46,8 @@ class OrderSubmitActivity : BaseActivity() {
         order.name = edt_name.text.toString()
         order.family = edt_family.text.toString()
         order.address = edt_address.text.toString()
+        order.phone = edt_mobile.text.toString()
+        order.description = edt_desc.text.toString()
 
         MainActivity.database?.orderDao()?.insert(order)
 
