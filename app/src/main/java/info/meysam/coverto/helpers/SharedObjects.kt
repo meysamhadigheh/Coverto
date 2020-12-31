@@ -10,11 +10,11 @@ class SharedObjects {
 
     companion object {
 
-        var cards: ArrayList<Card>? = null
-        var name: String? = null
-        var family: String? = null
-        var phone: String? = null
-        var address: String? = null
+        private var name: String?=""
+        private var cards: ArrayList<Card>? = ArrayList()
+        private var family: String? = ""
+        private var phone: String? = ""
+        private var address: String? = ""
 
         fun getName_t(): String? {
             if (name == null) {
