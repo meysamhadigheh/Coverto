@@ -86,6 +86,9 @@ dependencies {
     kapt "androidx.room:room-compiler:$version_room"
     implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
 
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:$version_room"
+
 
     implementation 'com.mohamadamin:persianmaterialdatetimepicker:1.2.1'
 

@@ -22,7 +22,4 @@ public interface OrderDao {
     void update(Order order);
 
 
-
-
-
 }

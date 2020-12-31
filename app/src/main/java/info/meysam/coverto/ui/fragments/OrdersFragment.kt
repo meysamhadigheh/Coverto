@@ -59,7 +59,7 @@ class OrdersFragment : Fragment() {
         super.onResume()
 
         var notes: List<Order> = ArrayList()
-        notes = MainActivity.database?.orderDao()?.all!! as ArrayList
+        notes = MainActivity.database?.orderDao()?.getAll()!! as ArrayList
 
         adapter.items = notes
         adapter.notifyDataSetChanged()

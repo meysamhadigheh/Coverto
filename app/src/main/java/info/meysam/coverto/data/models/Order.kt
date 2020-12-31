@@ -33,8 +33,9 @@ class Order : ItemBinder {
     @ColumnInfo(name = "date")
     var date: String? = PersianCalendar(System.currentTimeMillis()).persianLongDate
 
-    @ColumnInfo(name = "case")
-    var case: String? = null
+    @ColumnInfo(name = "c_type")
+    var c_type: String? = caseType.TWO_D.toString()
+
 
     @ColumnInfo(name = "status")
     var status: String? = orderStatus.SUBMITTED.toString()
@@ -77,7 +78,7 @@ class Order : ItemBinder {
 
 
             }
-            else->""
+            else -> ""
         }
     }
 }

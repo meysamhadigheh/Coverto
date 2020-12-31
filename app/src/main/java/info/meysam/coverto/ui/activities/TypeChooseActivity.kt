@@ -1,18 +1,14 @@
 package info.meysam.coverto.ui.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.view.View
 import com.google.gson.Gson
 import info.meysam.coverto.R
 import info.meysam.coverto.data.models.Order
-import info.meysam.coverto.helpers.CARDINFO
 import info.meysam.coverto.helpers.ORDERINFO
 import info.meysam.coverto.helpers.ORDERSUBMITTED
 import info.meysam.coverto.helpers.caseType
 import kotlinx.android.synthetic.main.activity_type_choose.*
-import kotlinx.android.synthetic.main.dialog_internet.*
 
 class TypeChooseActivity : BaseActivity(), View.OnClickListener {
 
@@ -48,12 +44,12 @@ class TypeChooseActivity : BaseActivity(), View.OnClickListener {
         when (v) {
             TWO_D -> {
 
-                order?.case = caseType.TWO_D.toString()
+                order?.c_type = caseType.TWO_D.toString()
 
             }
 
             THREE_D -> {
-                order?.case = caseType.THREE_D.toString()
+                order?.c_type = caseType.THREE_D.toString()
 
             }
             else -> {

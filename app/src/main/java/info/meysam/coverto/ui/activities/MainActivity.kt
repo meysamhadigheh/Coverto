@@ -69,6 +69,7 @@ class MainActivity : BaseActivity() {
         database= Room
             .databaseBuilder(applicationContext, OrdersDatabase::class.java, "orders")
             .allowMainThreadQueries()
+            .fallbackToDestructiveMigration()
             .build()
 
         bottom_navigation.currentItem = HOMEBNAV
